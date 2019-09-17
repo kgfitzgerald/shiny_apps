@@ -14,13 +14,13 @@ library(ggpubr)
 library(tidyverse)
 
 
-# Define UI for application that draws a histogram
+# Define UI for application to plot confidence intervals and display table
 ui <- fluidPage(
   withMathJax(),
   # Application title
   titlePanel("Confidence Intervals"),
   
-  # Sidebar with a slider input for number of bins 
+  # Sidebar with a slider input for sample size and Z* value
   sidebarLayout(
     sidebarPanel(
       sliderInput("n",
@@ -36,7 +36,7 @@ ui <- fluidPage(
                   step = 0.01))
     ,
     
-    # Show a plot of the generated distribution
+    # create Interface and Info tabs
     mainPanel(
       tabsetPanel(type = "tabs",
                     tabPanel("Interface", plotOutput("forest", height = "600px"),
@@ -86,7 +86,7 @@ this procedure - of drawing a random sample and calculating a range around the s
   
 
 
-# Define server logic required to draw a histogram
+# Define server logic required to compute and plot CIs
 server <- function(input, output) {
   
   I <- reactive(10000)

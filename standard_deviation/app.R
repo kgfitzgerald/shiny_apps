@@ -12,7 +12,7 @@ library(tidyverse)
 library(infer)
 library(gridExtra)
 
-# Define UI for application that draws a histogram
+# Define UI for application that draws histograms for various SD values
 ui <- fluidPage(
    
    # Application title
@@ -45,7 +45,7 @@ ui <- fluidPage(
          textOutput("ub_2"))
      ,
          
-      # Show histograms of the generated distributions
+      # Create Interface tab (to show histograms of the generated distributions) and Info tab
       mainPanel(
         tabsetPanel(type = "tabs",
                     tabPanel("Interface", plotOutput("hist_1", height = "600px", width = "100%"),
